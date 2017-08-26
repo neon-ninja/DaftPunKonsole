@@ -89,10 +89,11 @@ ion.sound
     sounds = []
     for i in [1..5]
       for s in sound_index
-        sounds.push {name: (s[2] + i), preload: true}
+        sounds.push {name: (s[2] + i), preload: false}
     return sounds
-  path: 'http://s.cdpn.io/190177/'
-  preload: true
+  path: 'assets/sounds/'
+  preload: false
+  volume: 0.8
 
 $ ->
   init()
@@ -138,7 +139,7 @@ $ ->
   $('#js-daft_1').jPlayer
     ready: (event) ->
       $(this).jPlayer 'setMedia',
-        m4a: 'http://s.cdpn.io/190177/instru.mp3'
+        m4a: 'assets/sounds/instru.mp3'
     supplied: 'm4a'
     wmode: 'window'
     autoBlur: false
