@@ -136,7 +136,7 @@ $ ->
     e.preventDefault()
     processKeyDown $(this), true
 
-  $('#js-daft_1').jPlayer
+  $('#js-player_1').jPlayer
     ready: (event) ->
       $(this).jPlayer 'setMedia',
         m4a: 'assets/sounds/instru.mp3'
