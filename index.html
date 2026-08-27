@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>DaftPunKonsole</title>
+  <meta name="description" content="Play Daft Punk's Harder, Better, Faster, Stronger on your keyboard or touch screen.">
+  <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="assets/css/konsole.css">
+</head>
+<body class="Normal">
+
+  <main class="wk">
+    <div id="js-lyrics" class="lyrics" aria-live="polite"></div>
+
+    <section class="guide" id="guide">
+      <div class="guide-idle" id="guide-idle">
+        <p class="howto">
+          <span class="howto-step"><b>1</b> pick a pitch</span>
+          <span class="howto-step"><b>2</b> tap the words</span>
+          <span class="howto-step"><b>3</b> add the beat</span>
+        </p>
+        <button type="button" id="guide-start" class="btn btn-small">Guide me through the song</button>
+      </div>
+      <div class="guide-active is-hidden" id="guide-active">
+        <p class="guide-hint"><span id="guide-line"></span><span id="guide-text"></span></p>
+        <div class="guide-actions">
+          <span class="guide-progress" id="guide-progress"></span>
+          <button type="button" id="guide-skip" class="btn btn-tiny">Skip line</button>
+          <button type="button" id="guide-exit" class="btn btn-tiny">Exit</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="k" id="keyboard">
+      <div class="r r-words">
+        <button type="button" class="key word" data-key="KeyQ" data-word="WorkIt"><span class="kbd"></span><b>Work it</b></button>
+        <button type="button" class="key word" data-key="KeyW" data-word="MakeIt"><span class="kbd"></span><b>Make it</b></button>
+        <button type="button" class="key word" data-key="KeyE" data-word="DoIt"><span class="kbd"></span><b>Do it</b></button>
+        <button type="button" class="key word" data-key="KeyR" data-word="MakesUs"><span class="kbd"></span><b>Makes us</b></button>
+        <i class="key spacer" data-key="KeyT"><span class="kbd"></span></i>
+        <i class="key spacer" data-key="KeyY"><span class="kbd"></span></i>
+        <button type="button" class="key word" data-key="KeyU" data-word="MoreThan"><span class="kbd"></span><b>More than</b></button>
+        <button type="button" class="key word" data-key="KeyI" data-word="Hour"><span class="kbd"></span><b>Hour</b></button>
+        <button type="button" class="key word" data-key="KeyO" data-word="Our"><span class="kbd"></span><b>Our</b></button>
+        <button type="button" class="key word" data-key="KeyP" data-word="Never"><span class="kbd"></span><b>Never</b></button>
+      </div>
+      <div class="r r-words r-offset">
+        <button type="button" class="key word" data-key="KeyA" data-word="Harder"><span class="kbd"></span><b>Harder</b></button>
+        <button type="button" class="key word" data-key="KeyS" data-word="Better"><span class="kbd"></span><b>Better</b></button>
+        <button type="button" class="key word" data-key="KeyD" data-word="Faster"><span class="kbd"></span><b>Faster</b></button>
+        <button type="button" class="key word" data-key="KeyF" data-word="Stronger"><span class="kbd"></span><b>Stronger</b></button>
+        <i class="key spacer" data-key="KeyG"><span class="kbd"></span></i>
+        <i class="key spacer" data-key="KeyH"><span class="kbd"></span></i>
+        <button type="button" class="key word" data-key="KeyJ" data-word="Ever"><span class="kbd"></span><b>Ever</b></button>
+        <button type="button" class="key word" data-key="KeyK" data-word="After"><span class="kbd"></span><b>After</b></button>
+        <button type="button" class="key word" data-key="KeyL" data-word="WorkIs"><span class="kbd"></span><b>Work is</b></button>
+        <button type="button" class="key word" data-key="Semicolon" data-word="Over"><span class="kbd"></span><b>Over</b></button>
+      </div>
+      <div class="r level" role="group" aria-label="Pitch level">
+        <span class="row-label">Pitch</span>
+        <button type="button" class="key lvl" data-key="KeyZ" data-level="Low" style="--key-accent:#dfba69"><b>Low</b><span class="kbd"></span></button>
+        <button type="button" class="key lvl" data-key="KeyX" data-level="Normal" style="--key-accent:#15d880"><b>Normal</b><span class="kbd"></span></button>
+        <button type="button" class="key lvl" data-key="KeyC" data-level="Pitch-1" style="--key-accent:#d43f57"><b>Pitch-1</b><span class="kbd"></span></button>
+        <button type="button" class="key lvl" data-key="KeyV" data-level="Pitch-2" style="--key-accent:#3bb9e4"><b>Pitch-2</b><span class="kbd"></span></button>
+        <button type="button" class="key lvl" data-key="KeyB" data-level="High" style="--key-accent:#714d9c"><b>High</b><span class="kbd"></span></button>
+      </div>
+      <div class="r r-space">
+        <button type="button" class="space" id="instru-btn" data-key="Space" aria-pressed="false">
+          <span class="space-label"><span class="dot"></span>Instrumental<span class="kbd kbd-space">space</span></span>
+          <span class="progress"><span class="bar" id="instru-bar"></span></span>
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <div class="legal">All sounds, samples, brands, trademarks, artworks, or any associated imagery are trademarks and/or copyright material of their respective owners. All rights reserved.</div>
+
+  <footer>
+    <div class="credits">
+      <p>#Daftpunkonsole</p>
+      <p>Made with <span class="heart">&hearts;</span> by Malik Dellidj
+        (<a href="https://twitter.com/Dathink" target="_blank" rel="noopener">@Dathink</a>)</p>
+      <p><a href="https://github.com/KOWLOR/DaftPunKonsole" target="_blank" rel="noopener">GitHub</a></p>
+    </div>
+  </footer>
+
+  <div class="modal" id="modal">
+    <img src="assets/images/Daft_Punk.png" class="daft-punk-logo" alt="Daft Punk">
+    <h1>&ldquo;Harder, Better, Faster, Stronger&rdquo;</h1>
+    <h2>Please choose your keyboard</h2>
+    <ul>
+      <li><button type="button" class="btn" data-layout="qwerty">QWERTY</button></li>
+      <li><button type="button" class="btn" data-layout="qwertz">QWERTZ</button></li>
+      <li><button type="button" class="btn" data-layout="azerty">AZERTY</button></li>
+    </ul>
+    <p class="modal-note"><button type="button" class="link-btn" id="modal-skip">No keyboard? Just use your mouse &rarr;</button></p>
+  </div>
+
+  <audio id="instru" src="assets/sounds/instru.mp3" preload="auto"></audio>
+  <script src="assets/js/konsole.js"></script>
+</body>
+</html>
