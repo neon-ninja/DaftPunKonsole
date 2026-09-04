@@ -16,26 +16,26 @@
   // Each word maps to sound files <name><variant>.mp3. Not every word was
   // recorded at every pitch: the left-hand words have no "Low" (3) variant.
   var WORDS = {
-    WorkIt:   { lyric: 'Work it',   variants: [1, 2, 4, 5] },
-    MakeIt:   { lyric: 'Make it',   variants: [1, 2, 4, 5] },
-    DoIt:     { lyric: 'Do it',     variants: [1, 2, 4, 5] },
-    MakesUs:  { lyric: 'Makes us',  variants: [1, 2, 4, 5] },
-    Harder:   { lyric: 'Harder',    variants: [1, 2, 4, 5] },
-    Better:   { lyric: 'Better',    variants: [1, 2, 4, 5] },
-    Faster:   { lyric: 'Faster',    variants: [1, 2, 4, 5] },
-    Stronger: { lyric: 'Stronger',  variants: [1, 2, 4, 5] },
-    MoreThan: { lyric: 'More than', variants: [1, 2, 3, 4, 5] },
-    Hour:     { lyric: 'Hour',      variants: [1, 2, 3, 4, 5] },
-    Our:      { lyric: 'Our',       variants: [1, 2, 3, 4, 5] },
-    Never:    { lyric: 'Never',     variants: [1, 2, 3, 4, 5] },
-    Ever:     { lyric: 'Ever',      variants: [1, 2, 3, 4, 5] },
-    After:    { lyric: 'After',     variants: [1, 2, 3, 4, 5] },
-    WorkIs:   { lyric: 'Work is',   variants: [1, 2, 3, 4, 5] },
-    Over:     { lyric: 'Over',      variants: [1, 2, 3, 4, 5] }
+    WorkIt:   { lyric: 'Work it',   variants: [1, 2, 4, 5, 6, 7] },
+    MakeIt:   { lyric: 'Make it',   variants: [1, 2, 4, 5, 6, 7] },
+    DoIt:     { lyric: 'Do it',     variants: [1, 2, 4, 5, 6, 7] },
+    MakesUs:  { lyric: 'Makes us',  variants: [1, 2, 4, 5, 6, 7] },
+    Harder:   { lyric: 'Harder',    variants: [1, 2, 4, 5, 6, 7] },
+    Better:   { lyric: 'Better',    variants: [1, 2, 4, 5, 6, 7] },
+    Faster:   { lyric: 'Faster',    variants: [1, 2, 4, 5, 6, 7] },
+    Stronger: { lyric: 'Stronger',  variants: [1, 2, 4, 5, 6, 7] },
+    MoreThan: { lyric: 'More than', variants: [1, 2, 3, 4, 5, 6, 7] },
+    Hour:     { lyric: 'Hour',      variants: [1, 2, 3, 4, 5, 6, 7] },
+    Our:      { lyric: 'Our',       variants: [1, 2, 3, 4, 5, 6, 7] },
+    Never:    { lyric: 'Never',     variants: [1, 2, 3, 4, 5, 6, 7] },
+    Ever:     { lyric: 'Ever',      variants: [1, 2, 3, 4, 5, 6, 7] },
+    After:    { lyric: 'After',     variants: [1, 2, 3, 4, 5, 6, 7] },
+    WorkIs:   { lyric: 'Work is',   variants: [1, 2, 3, 4, 5, 6, 7] },
+    Over:     { lyric: 'Over',      variants: [1, 2, 3, 4, 5, 6, 7] }
   };
 
-  var LEVEL_VARIANT = { Normal: 1, 'Pitch-1': 2, Low: 3, 'Pitch-2': 4, High: 5 };
-  var LEVELS = ['Low', 'Normal', 'Pitch-1', 'Pitch-2', 'High'];
+  var LEVEL_VARIANT = { Normal: 1, 'Pitch-1': 2, Low: 3, 'Pitch-2': 4, High: 5, Higher: 6, Highest: 7 };
+  var LEVELS = ['Low', 'Normal', 'Pitch-1', 'Pitch-2', 'High', 'Higher', 'Highest'];
 
   // Keys are matched by physical position (KeyboardEvent.code), so any
   // keyboard works out of the box; the layout choice only changes the
@@ -45,12 +45,12 @@
     KeyU: 'u', KeyI: 'i', KeyO: 'o', KeyP: 'p',
     KeyA: 'a', KeyS: 's', KeyD: 'd', KeyF: 'f', KeyG: 'g', KeyH: 'h',
     KeyJ: 'j', KeyK: 'k', KeyL: 'l', Semicolon: ';',
-    KeyZ: 'z', KeyX: 'x', KeyC: 'c', KeyV: 'v', KeyB: 'b'
+    KeyZ: 'z', KeyX: 'x', KeyC: 'c', KeyV: 'v', KeyB: 'b', KeyN: 'n', KeyM: 'm'
   };
   var LAYOUTS = {
     qwerty: {},
     qwertz: { KeyY: 'z', KeyZ: 'y', Semicolon: 'ö' },
-    azerty: { KeyQ: 'a', KeyW: 'z', KeyA: 'q', Semicolon: 'm', KeyZ: 'w' }
+    azerty: { KeyQ: 'a', KeyW: 'z', KeyA: 'q', Semicolon: 'm', KeyZ: 'w', KeyM: ',' }
   };
 
   // Guided mode: the real lines of the song, as key sequences.
@@ -69,7 +69,10 @@
               { word: 'Hour' }, { word: 'WorkIs' }, { word: 'Never' }, { word: 'Over' }] },
     { title: 'Line 1 &middot; bring it home',
       steps: [{ level: 'High' }, { word: 'WorkIt' }, { word: 'Harder' }, { word: 'MakeIt' }, { word: 'Better' },
-              { word: 'DoIt' }, { word: 'Faster' }, { word: 'MakesUs' }, { word: 'Stronger' }] }
+              { word: 'DoIt' }, { word: 'Faster' }, { word: 'MakesUs' }, { word: 'Stronger' }] },
+    { title: 'Line 2 &middot; over the top',
+      steps: [{ level: 'Highest' }, { word: 'MoreThan' }, { word: 'Ever' }, { word: 'Hour' }, { word: 'After' },
+              { word: 'Hour' }, { word: 'WorkIs' }, { word: 'Never' }, { word: 'Over' }] }
   ];
 
   var $ = function (sel, root) { return (root || document).querySelector(sel); };
@@ -185,35 +188,50 @@
     unlockAudio();
     if (el.dataset.level) setLevel(el.dataset.level);
     else if (el.dataset.word) pressWord(el);
-    else if (el.id === 'instru-btn') toggleInstru();
+    else if (el.dataset.track) toggleTrack(el.dataset.track);
   }
 
   /* ------------------------------------------------------------------ *
-   * Instrumental (looping backing track with progress bar)
+   * Backing tracks (looping, with progress bar). Two tracks: the
+   * original short instrumental and the full beat; playing one pauses
+   * the other.
    * ------------------------------------------------------------------ */
-  var instru = $('#instru');
-  var instruBtn = $('#instru-btn');
-  var instruBar = $('#instru-bar');
-  instru.loop = true;
-  instru.volume = 0.8;
+  var tracks = {};
+  ['instru', 'beat'].forEach(function (id) {
+    var t = {
+      audio: $('#' + id),
+      btn: $('[data-track="' + id + '"]'),
+      bar: $('[data-track="' + id + '"] .bar')
+    };
+    t.audio.loop = true;
+    t.audio.volume = 0.8;
+    t.audio.addEventListener('play', function () {
+      t.btn.classList.add('is-playing');
+      t.btn.setAttribute('aria-pressed', 'true');
+    });
+    t.audio.addEventListener('pause', function () {
+      t.btn.classList.remove('is-playing');
+      t.btn.setAttribute('aria-pressed', 'false');
+    });
+    t.audio.addEventListener('timeupdate', function () {
+      if (t.audio.duration) {
+        t.bar.style.width = (t.audio.currentTime / t.audio.duration) * 100 + '%';
+      }
+    });
+    tracks[id] = t;
+  });
 
-  function toggleInstru() {
-    if (instru.paused) instru.play().catch(function () {});
-    else instru.pause();
-  }
-  instru.addEventListener('play', function () {
-    instruBtn.classList.add('is-playing');
-    instruBtn.setAttribute('aria-pressed', 'true');
-  });
-  instru.addEventListener('pause', function () {
-    instruBtn.classList.remove('is-playing');
-    instruBtn.setAttribute('aria-pressed', 'false');
-  });
-  instru.addEventListener('timeupdate', function () {
-    if (instru.duration) {
-      instruBar.style.width = (instru.currentTime / instru.duration) * 100 + '%';
+  function toggleTrack(id) {
+    var t = tracks[id];
+    if (t.audio.paused) {
+      Object.keys(tracks).forEach(function (other) {
+        if (other !== id) tracks[other].audio.pause();
+      });
+      t.audio.play().catch(function () {});
+    } else {
+      t.audio.pause();
     }
-  });
+  }
 
   /* ------------------------------------------------------------------ *
    * Guided mode

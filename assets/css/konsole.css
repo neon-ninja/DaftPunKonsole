@@ -24,6 +24,8 @@
   --grape: #714d9c;
   --extra: #15d880;
   --gold: #dfba69;
+  --silver: #c9d1d3;
+  --blaze: #ef7d3b;
   --accent: var(--extra);
   --font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -33,6 +35,8 @@ body.Pitch-1 { --accent: var(--love); }
 body.Pitch-2 { --accent: var(--sky); }
 body.Low     { --accent: var(--gold); }
 body.High    { --accent: var(--grape); }
+body.Higher  { --accent: var(--silver); }
+body.Highest { --accent: var(--blaze); }
 
 html { height: 100%; }
 
@@ -291,8 +295,8 @@ a:hover { color: #fff; }
 }
 .key.lvl.is-next b { background: var(--key-accent); }
 
-/* instrumental */
-.r-space { justify-content: center; }
+/* backing tracks */
+.r-space { justify-content: center; gap: 0.625rem; }
 .space {
   font: inherit;
   flex: 1;
@@ -421,7 +425,7 @@ footer {
 
   .level {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 0.5rem;
     padding-top: 0.875rem;
   }

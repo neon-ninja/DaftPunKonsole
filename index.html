@@ -64,11 +64,17 @@
         <button type="button" class="key lvl" data-key="KeyC" data-level="Pitch-1" style="--key-accent:#d43f57"><b>Pitch-1</b><span class="kbd"></span></button>
         <button type="button" class="key lvl" data-key="KeyV" data-level="Pitch-2" style="--key-accent:#3bb9e4"><b>Pitch-2</b><span class="kbd"></span></button>
         <button type="button" class="key lvl" data-key="KeyB" data-level="High" style="--key-accent:#714d9c"><b>High</b><span class="kbd"></span></button>
+        <button type="button" class="key lvl" data-key="KeyN" data-level="Higher" style="--key-accent:#c9d1d3"><b>Higher</b><span class="kbd"></span></button>
+        <button type="button" class="key lvl" data-key="KeyM" data-level="Highest" style="--key-accent:#ef7d3b"><b>Highest</b><span class="kbd"></span></button>
       </div>
       <div class="r r-space">
-        <button type="button" class="space" id="instru-btn" data-key="Space" aria-pressed="false">
+        <button type="button" class="space" id="instru-btn" data-track="instru" data-key="Space" aria-pressed="false">
           <span class="space-label"><span class="dot"></span>Instrumental<span class="kbd kbd-space">space</span></span>
-          <span class="progress"><span class="bar" id="instru-bar"></span></span>
+          <span class="progress"><span class="bar"></span></span>
+        </button>
+        <button type="button" class="space" id="beat-btn" data-track="beat" data-key="Enter" aria-pressed="false">
+          <span class="space-label"><span class="dot"></span>Full beat<span class="kbd kbd-space">enter</span></span>
+          <span class="progress"><span class="bar"></span></span>
         </button>
       </div>
     </div>
@@ -98,6 +104,7 @@
   </div>
 
   <audio id="instru" src="assets/sounds/instru.mp3" preload="auto"></audio>
+  <audio id="beat" src="assets/sounds/beat.mp3" preload="auto"></audio>
   <script src="assets/js/konsole.js"></script>
 </body>
 </html>

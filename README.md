@@ -13,9 +13,9 @@ It's a fully static site with no build step. Open `index.html` directly, or serv
 
 ## How to play
 
-1. Pick a **pitch** (Low → High). Each pitch has its own color.
+1. Pick a **pitch** (Low → Highest, seven levels). Each pitch has its own color.
 2. Tap the **word keys** (or press the matching letters on your keyboard).
-3. Hit **Instrumental** (or the space bar) to jam over the beat.
+3. Hit **Instrumental** (space bar) or **Full beat** (enter) to jam over a backing track.
 
 Not sure what to press when? Hit **"Guide me through the song"** and the konsole
 highlights each key in order, line by line, through the real lyrics.
@@ -34,7 +34,8 @@ Originally built with Middleman 3, CoffeeScript, Sass and Bower. That toolchain 
 no longer be installed (Middleman 3 doesn't run on modern Ruby, and Bower is
 discontinued), so the app was rewritten as a dependency-free static page: vanilla
 JS + Web Audio instead of jQuery/ion.sound/jPlayer. The missing pitch variants of
-the sound files (4 and 5) were restored from the revival at
+the sound files (4–7, powering the Pitch-2 through Highest levels) and the
+**Full beat** backing track were restored from the revival at
 [jkdos.com/daftpunkonsole](https://jkdos.com/daftpunkonsole/) by Joseph Kreifels II.
 
 Made with ♥ by Malik Dellidj — [@Dathink](https://twitter.com/Dathink)
